@@ -51,7 +51,7 @@ const HeroesList = () => {
     const { request } = useHttp();
 
     useEffect(() => {
-        dispatch(heroesFetching());
+        dispatch("HEROES_FETCHING");
         request("http://localhost:3001/heroes")
             .then((data) => dispatch(heroesFetched(data)))
             .catch(() => dispatch(heroesFetchingError()));
@@ -69,8 +69,7 @@ const HeroesList = () => {
                 .then((data) => console.log(data, "Deleted"))
                 .then(dispatch(heroDeleted(id)))
                 .catch((err) => console.log(err));
-            // eslint-disable-next-line
-        },
+        }, // eslint-disable-next-line
         [request]
     );
 
